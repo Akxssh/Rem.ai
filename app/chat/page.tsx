@@ -34,7 +34,7 @@ export default function Page() {
     setMessages((prev) => [...prev, { role: "user", content: userText }])
     const res = await fetch("/api/chat", {
       method: "POST",
-      body: JSON.stringify({ message: userText }),
+      body: JSON.stringify({ message: messages }),
     })
     if (!res.ok) {
       console.log("fetch failed")

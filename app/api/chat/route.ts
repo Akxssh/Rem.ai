@@ -7,7 +7,7 @@
 // openrouter :
 export async function POST(req: Request) {
   try {
-    const { message } = await req.json()
+    const { messages } = await req.json()
 
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
@@ -19,8 +19,11 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         model: "openrouter/free",
         messages: [
-          { role: "system", content: "You are a helpful assistant." },
-          { role: "user", content: message },
+          {
+            role: "system",
+            content: "You are Rem.ai, a helpful assistant.",
+          },
+          ...messages,
         ],
       }),
     })
