@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 export default function Page() {
   const router = useRouter()
   return (
-    <div className="flex min-h-svh p-6">
+    <div className="no-scrollbar flex min-h-svh p-6">
       <div className="flex w-full flex-1 flex-col items-center justify-center gap-6">
         <motion.div
           initial={{ filter: "blur(10px)", x: 10 }}
@@ -15,12 +15,12 @@ export default function Page() {
         >
           <h1 className="text-5xl">Rem.ai</h1>
         </motion.div>
-        <div className="flex scale-100 flex-col items-center justify-center sm:scale-125">
+        <div className="flex scale-100 flex-col items-center justify-center sm:scale-150">
           <motion.h2
             initial={{ filter: "blur(10px)", x: 20 }}
             animate={{ filter: "blur(0px)", x: 0 }}
             transition={{ duration: 1 * 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-gray-300"
+            className="text-sm text-gray-300"
           >
             ultimate motivation from Rem,
           </motion.h2>
@@ -28,7 +28,7 @@ export default function Page() {
             initial={{ filter: "blur(10px)", x: 20 }}
             animate={{ filter: "blur(0px)", x: 0 }}
             transition={{ duration: 2 * 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="text-gray-300"
+            className="text-sm text-gray-300"
           >
             Rem helps you through the{" "}
             <span className="text-green-300">highs </span> and the{" "}
@@ -41,7 +41,10 @@ export default function Page() {
           transition={{ duration: 3 * 0.5, ease: [0.22, 1, 0.36, 1] }}
           className=""
         >
-          <Button onClick={() => router.push("/chat")} className="scale-125">
+          <Button
+            onClick={() => router.push("/chat")}
+            className="mt-4 scale-150"
+          >
             Get started
           </Button>
         </motion.div>
