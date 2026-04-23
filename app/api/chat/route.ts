@@ -17,7 +17,7 @@ export async function POST(req: Request) {
         "HTTP-Referer": "http://localhost:3000",
       },
       body: JSON.stringify({
-        model: "openrouter/free",
+        model: "stepfun/step-3.5-flash",
         messages: [
           {
             role: "system",
