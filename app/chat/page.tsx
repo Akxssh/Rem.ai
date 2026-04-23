@@ -62,7 +62,7 @@ export default function Page() {
       </div>
       {/*Message/history area*/}
       <div className="mt-12 flex flex-1 flex-col items-center justify-end">
-        <div className="max-h-2xl flex w-full flex-1 flex-col items-center justify-center overflow-y-auto sm:max-w-2xl">
+        <div className="max-h-2xl flex w-full flex-1 flex-col items-center justify-center overflow-y-auto px-2 pt-12 sm:max-w-2xl">
           {messages.map((m, i) => (
             <div key={i} className="flex w-full items-start justify-end">
               {m.role === "user" ? (
@@ -95,7 +95,12 @@ export default function Page() {
               placeholder="Ask rem..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              // onKeyDown={}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault()
+                  send()
+                }
+              }}
             />
 
             <button
