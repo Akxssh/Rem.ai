@@ -1,4 +1,6 @@
 "use client"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 import { Textarea } from "@/components/ui/textarea"
 import { ArrowRight } from "lucide-react"
 import { useState } from "react"
@@ -17,10 +19,6 @@ export default function Page() {
     {
       role: "assistant",
       content: "Hey there! , how can i help you today?",
-    },
-    {
-      role: "user",
-      content: "default test message from user",
     },
   ])
 
@@ -68,15 +66,22 @@ export default function Page() {
           {messages.map((m, i) => (
             <div key={i} className="flex w-full items-start justify-end">
               {m.role === "user" ? (
-                <Card className="m-2 w-3/5 p-2 text-2xl sm:max-w-2xl" key={i}>
-                  {m.content}
+                <Card
+                  className="m-2 flex w-auto max-w-xl items-end p-2 text-2xl sm:max-w-2xl"
+                  key={i}
+                >
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {m.content}
+                  </ReactMarkdown>
                 </Card>
               ) : (
                 <Card
                   className="m-2 mr-auto w-3/5 p-2 text-2xl sm:max-w-2xl"
                   key={i}
                 >
-                  Rem:{m.content}
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {m.content}
+                  </ReactMarkdown>
                 </Card>
               )}
             </div>
@@ -87,7 +92,7 @@ export default function Page() {
           <div className="jusitfy-center relative flex w-full max-w-3xl">
             <Textarea
               className="mx-auto no-scrollbar h-auto min-h-4 max-w-5xl resize-none rounded-2xl border border-gray-700 bg-gray-900 p-4 pr-14 text-white placeholder:text-gray-400 focus:ring-2 focus:ring-gray-600 focus:outline-none sm:w-full"
-              placeholder="Type your message..."
+              placeholder="Ask rem..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               // onKeyDown={}
